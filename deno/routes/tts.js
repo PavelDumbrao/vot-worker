@@ -2,7 +2,7 @@ import { Router } from "@oak/oak";
 const ttsRouter = new Router();
 
 ttsRouter.post("/", async (ctx) => {
-  const body = await ctx.request.body({ type: "json" }).value;
+  const body = await ctx.request.body.value;  // <-- важная строка!
   ctx.response.body = {
     ok: true,
     received: body,
