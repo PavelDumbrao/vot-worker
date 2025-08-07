@@ -1,10 +1,10 @@
 import { Router } from "@oak/oak";
-
 import videoTranslationRouter from "./videoTranslation.js";
 import videoSubtitlesRouter from "./videoSubtitles.js";
 import streamTranslationRouter from "./streamTranslation.js";
 import sessionRouter from "./session.js";
 import healthRouter from "./health.js";
+import ttsRouter from "./tts.js";
 
 const mainRouter = new Router()
   .use(
@@ -23,6 +23,7 @@ const mainRouter = new Router()
     streamTranslationRouter.allowedMethods()
   )
   .use("/session", sessionRouter.routes(), sessionRouter.allowedMethods())
-  .use("/health", healthRouter.routes(), healthRouter.allowedMethods());
+  .use("/health", healthRouter.routes(), healthRouter.allowedMethods())
+  .use("/api/tts", ttsRouter.routes(), ttsRouter.allowedMethods());
 
 export default mainRouter;
